@@ -3,7 +3,6 @@
 # クラス図
 
 ```mermaid
-classDiagram
 
 graph TD;
     A-->B;
