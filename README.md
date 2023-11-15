@@ -16,4 +16,4 @@ graph TD;
 
 # ワイヤーフレーム
 
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" height="450" width="800" src="https://www.figma.com/embed?embed_host=astra&url=https://www.figma.com/file/LKQ4FJ4bTnCSjedbRpk931/Sample-File" allowfullscreen />
+<iframe width="560" height="315" src="https://www.youtube.com/embed/M7lc1UVf-VE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy" allowfullscreen></iframe>
