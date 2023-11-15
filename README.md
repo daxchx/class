@@ -3,28 +3,69 @@
 ```mermaid
 
 classDiagram
-    note "From Duck till Zebra"
-    Animal <|-- Duck
-    note for Duck "can fly\ncan swim\ncan dive\ncan help in debugging"
-    Animal <|-- Fish
-    Animal <|-- Zebra
-    Animal : +int age
-    Animal : +String gender
-    Animal: +isMammal()
-    Animal: +mate()
-    class Duck{
-        +String beakColor
-        +swim()
-        +quack()
-    }
-    class Fish{
-        -int sizeInFeet
-        -canEat()
-    }
-    class Zebra{
-        +bool is_wild
-        +run()
-    }
+
+class Table {
+  - gameType: string
+  - betDenominations: number[]
+  - turnCounter: number = 0
+  - gamePhase: string = 'betting'
+  - resultsLog: string[]
+  - deck: Deck
+  - players: Player[]
+  - dealer: Player
+  <<constructor>> + Table(gameType: string, betDenominations: number[])
+  + blackjackAssignPlayerHands(): void
+  + blackjackClearPlayerHandsAndBets(): void
+  + evaluateMove(player: Player): void
+  + getTurnPlayer(): Player
+  + haveTurn(userData: number): void
+  + checkGamePhase(): string
+  + blackjackEvaluateAndGetRoundResult(): string
+  + onLastPlayer(): boolean
+  + onFirstPlayer(): boolean
+  + allPlayerActionResolved(): boolean
+}
+
+class GameDecision {
+  - action: string
+  - amount: number
+  <<constructor>> + GameDecision(action: string, amount: number)
+}
+
+class Player {
+  - name: string
+  - type: string
+  - gameType: string
+  - chips: number
+  - bet: number = 0
+  - winAmount: number = 0
+  - gameStatus: string = 'betting'
+  - hand: Card[]
+  <<constructor>> + Player(name: string, type: string, gameType: string, chips: number = 400)
+  + promptPlayer(userData: number | null): GameDecision
+  + getHandScore(): number
+}
+
+class Deck {
+  - gameType: string
+  - cards: Card[]
+  <<constructor>> + Deck(gameType: string)
+  + shuffle(): void
+  + resetDeck(gameType: string): Card[]
+  + drawCard(): Card
+}
+
+class Card {
+  - suit: string
+  - rank: string
+  <<constructor>> + Card(suit: string, rank: string)
+  + getRankNumber(sum: number): number
+}
+
+Table "1" --> "1..*" Player : contains
+Table "1" --> "1" Deck : contains
+Player --|> GameDecision : creates
+Deck --> Card : owns
 
 ```
 
