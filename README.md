@@ -1,5 +1,3 @@
-# Black Jack
-
 # クラス図
 
 ```mermaid
@@ -9,9 +7,21 @@ graph TD;
     A-->C;
     B-->D;
     C-->D;
+
 ```
 
 # アクティビティ図
+
+```mermaid
+
+flowchart TD
+    A[Start] --> B{Is it?}
+    B -->|Yes| C[OK]
+    C --> D[Rethink]
+    D --> B
+    B ---->|No| E[End]
+
+```
 
 # ワイヤーフレーム
 
